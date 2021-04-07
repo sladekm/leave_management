@@ -30,7 +30,7 @@ namespace leave_management.Repository
 
         public ICollection<LeaveType> FindAll()
         {
-             return _db.LeaveTypes.ToList();
+            return _db.LeaveTypes.ToList();
         }
 
         public LeaveType FindById(int id)
