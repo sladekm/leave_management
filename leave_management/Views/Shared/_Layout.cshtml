@@ -11,6 +11,7 @@
     <title>@ViewData["Title"] - Core Leave Management</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
@@ -28,25 +29,28 @@
                             <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="#">Apply For Leave</a>
+                            <a class="nav-link text-white" asp-controller="LeaveRequest" asp-action="Create">Apply For Leave</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-controller="LeaveRequest" asp-action="MyLeave">My Leave</a>
                         </li>
                         @if (SignInManager.IsSignedIn(User))
                         {
                             if (User.IsInRole("Administrator"))
                             {
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Management
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" asp-controller="LeaveTypes" asp-action="Index">Leave Types</a>
-                                        <a class="dropdown-item" asp-controller="LeaveAllocation" asp-action="Index">Leave Allocations</a>
-                                        <a class="dropdown-item" href="#">Leave Applications</a>
-                                        <a class="dropdown-item" asp-controller="LeaveAllocation" asp-action="ListEmployees">Employees</a>
-                                    </div>
-                                </li>
-                            }
-                        }
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Management
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" asp-controller="LeaveTypes" asp-action="Index">Leave Types</a>
+                            <a class="dropdown-item" asp-controller="LeaveAllocation" asp-action="Index">Leave Allocations</a>
+                            <a class="dropdown-item" asp-controller="LeaveRequest" asp-action="Index">Leave Requests</a>
+                            <a class="dropdown-item" asp-controller="LeaveAllocation" asp-action="ListEmployees">Employees</a>
+                        </div>
+                    </li>
+}
+            }
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>
@@ -65,6 +69,7 @@
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="//cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
     <script src="https://kit.fontawesome.com/adfef38cb0.js" crossorigin="anonymous"></script>
